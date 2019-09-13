@@ -1,0 +1,177 @@
+/* Slider */
+.slick-slider {
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.slick-list:focus {
+	outline: none;
+}
+
+.slick-list.dragging {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+	position: relative;
+	left: 0;
+	top: 0;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.slick-track:before, .slick-track:after {
+	content: "";
+	display: table;
+}
+
+.slick-track:after {
+	clear: both;
+}
+
+.slick-loading .slick-track {
+	visibility: hidden;
+}
+
+.slick-slide {
+	float: left;
+	height: 100%;
+	min-height: 1px;
+	display: none;
+}
+
+[dir=rtl] .slick-slide {
+	float: right;
+}
+
+.slick-slide img {
+	display: block;
+}
+
+.slick-slide.slick-loading img {
+	display: none;
+}
+
+.slick-slide.dragging img {
+	pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+	display: block;
+}
+
+.slick-loading .slick-slide {
+	visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+	display: block;
+	height: auto;
+	border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+	display: none;
+}
+
+.slick-dots {
+	position: absolute;
+	display: block;
+	width: 100%;
+	padding: 0;
+	text-align: center;
+	bottom: -10px;
+	margin: 1rem 0 0 0;
+}
+
+.slick-dots li {
+	position: relative;
+	display: inline-block;
+	margin: 0 5px;
+	padding: 0;
+	cursor: pointer;
+}
+
+.slick-dots li button {
+	font-size: 0;
+	line-height: 0;
+	display: block;
+	width: 9px;
+	height: 9px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.5s;
+	border: 0;
+	outline: none;
+	background: #666666;
+}
+
+.slick-dots li button:hover {
+	outline: none;
+	background: #00afeb;
+}
+
+.slick-active button {
+	background: #00afeb !important;
+	width: 30px !important;
+}
+
+#v-slider .card {
+	border-radius: 5px;
+	//border: 1px solid #ccc;
+	margin-bottom: 15px;
+	//padding: 10px;
+	box-shadow: 0px 8px 8px -10px rgba(39, 52, 62, 0.6);
+	//height: 210px;
+	overflow: hidden;
+}
+
+#v-slider .card ul {
+	color: #9a9a9a;
+	padding: 0;
+	text-align: center;
+}
+
+#v-slider .card ul li {
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+
+//
+//#v-slider .card .card-text {
+//	height: 110px;
+//	overflow: hidden;
+//	text-overflow: ellipsis;
+//}
+//
+#v-slider .card img {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	object-fit: cover;
+	//height: 60%;
+	max-height: 300px;
+}

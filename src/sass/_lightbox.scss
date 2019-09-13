@@ -1,0 +1,150 @@
+.lightbox {
+	display: -ms-flexbox !important;
+	display: flex !important;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding-right: 0 !important
+}
+
+.lightbox-container {
+	position: relative
+}
+
+.lightbox-container > div.lightbox-item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%
+}
+
+.lightbox iframe {
+	width: 100%;
+	height: 100%
+}
+
+.lightbox-nav-overlay {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: -ms-flexbox;
+	display: flex
+}
+
+.lightbox-nav-overlay a {
+	-ms-flex: 1;
+	flex: 1;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	opacity: 0;
+	transition: opacity .5s;
+	color: #fff;
+	font-size: 30px;
+	z-index: 1
+}
+
+.lightbox-nav-overlay a > * {
+	-ms-flex-positive: 1;
+	flex-grow: 1
+}
+
+.lightbox-nav-overlay a > :focus {
+	outline: none
+}
+
+.lightbox-nav-overlay a span {
+	padding: 0 30px
+}
+
+.lightbox-nav-overlay a:last-child span {
+	text-align: right
+}
+
+.lightbox-nav-overlay a:hover {
+	text-decoration: none
+}
+
+.lightbox-nav-overlay a:focus {
+	outline: none
+}
+
+.lightbox-nav-overlay a.disabled {
+	cursor: default;
+	visibility: hidden
+}
+
+.lightbox a:hover {
+	opacity: 1;
+	text-decoration: none
+}
+
+.lightbox .modal-dialog {
+	display: none
+}
+
+.lightbox .modal-footer {
+	text-align: left
+}
+
+.lightbox-loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-ms-flex-align: center;
+	align-items: center
+}
+
+.lightbox-loader > div {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	text-align: center
+}
+
+.lightbox-loader > div > div {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #fff;
+	opacity: .6;
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation: a 2s infinite ease-in-out
+}
+
+.lightbox-loader > div > div:last-child {
+	animation-delay: -1s
+}
+
+.modal-dialog .lightbox-loader > div > div {
+	background-color: #333
+}
+
+@keyframes a {
+	0%, to {
+		transform: scale(0);
+		-webkit-transform: scale(0)
+	}
+	50% {
+		transform: scale(1);
+		-webkit-transform: scale(1)
+	}
+}

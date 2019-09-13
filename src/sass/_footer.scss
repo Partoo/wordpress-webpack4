@@ -1,0 +1,32 @@
+.site footer {
+	background: darken($blue, 15);
+	text-align: center;
+	padding: 30px 0;
+	font-size: 14px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 135px;
+	color: #fff;
+
+	li {
+		display: inline-block;
+		padding: 0 5px;
+	}
+
+	a {
+		color: #f0f0f0;
+		transition: all .5s ease;
+	}
+
+	footer .copyright-footer {
+		border-top: 1px solid #ddd;
+		padding-top: 20px;
+		font-size: 14px;
+	}
+
+	.credits {
+		font-size: 12px;
+	}
+}

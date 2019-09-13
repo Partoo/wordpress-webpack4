@@ -1,0 +1,234 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: calc(100% - #{$nav-height});
+}
+
+ul {
+	list-style: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+// SITE
+.site {
+	position: relative;
+	min-height: 100%;
+	padding-bottom: 135px;
+
+	.main {
+		margin-top: 100px;
+	}
+}
+
+// TEXT
+.text-dark-primary {
+	color: darken($blue, 15);
+}
+
+// TITLE
+.title-underline {
+	position: relative;
+	padding-bottom: 10px;
+	border-bottom: 1px dotted #c7c7c7;
+
+	&:after {
+		bottom: 0;
+		background: #00afeb;
+		content: "";
+		height: 5px;
+		left: 0;
+		position: absolute;
+		width: 130px;
+	}
+}
+
+// MORE
+.more {
+	font-size: .9rem;
+}
+
+// COVER
+.cover {
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center center;
+		transition: all .2s ease-in-out;
+		cursor: pointer;
+
+		&:hover {
+			transform: scale(2);
+		}
+	}
+}
+
+
+// BLOG-POSTS
+.blog-posts article {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	//padding-bottom: 22px;
+
+	&:not(:last-child) {
+		margin-bottom: 40px;
+	}
+
+	.post-image {
+		overflow: hidden;
+		height: 150px;
+	}
+
+	.post-content {
+		.excerpt {
+			height: 67px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+		}
+	}
+}
+
+// PARALLAX
+.parallax {
+	position: relative;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+// MARGIN-NAV
+.margin-nav {
+	margin-top: $nav-height;
+}
+
+// Weather
+#weather .memo {
+	margin-top: -30px;
+	z-index: 999;
+	position: relative
+}
+
+#weather .weather {
+	text-align: center
+}
+
+#weather .weather span {
+	display: block;
+	font-size: 14px;
+	color: #a9a9a9;
+	margin-top: -8px
+}
+
+#weather .weather i {
+	color: #a9a9a9;
+	font-size: 2.8rem
+}
+
+#weather .info h3 {
+	font-size: 1.5rem;
+	color: #a9a9a9 !important;
+	margin-top: 5px
+}
+
+#weather .info p span {
+	font-size: 1.8rem;
+	margin-right: 1rem
+}
+
+// QUICK NAV
+.quick-nav li {
+	width: 100%;
+	height: 50px;
+	transition: all 0.3s;
+	margin-bottom: 5px;
+	border-radius: 3px;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.quick-nav li:last-child {
+	margin-bottom: 0;
+}
+
+.quick-nav li a {
+	background: #000000;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+	display: block;
+	min-height: 50px;
+	opacity: 0.6;
+	transition: all 0.3s;
+}
+
+.quick-nav li a h4 {
+	color: #fff;
+	line-height: 50px;
+	font-size: medium;
+	text-shadow: 2px 2px 6px #3e3e3e;
+}
+
+.quick-nav li a h4:hover {
+	opacity: 0;
+}
+
+.quick-nav li a:hover {
+	text-decoration: none;
+	opacity: 0.2;
+}
+
+.quick-nav .bg-1 {
+	background: url(http://www.sip-ych.com/themes/default/Public/assets/images/play/beauty.jpg);
+	background-size: cover;
+}
+
+.quick-nav .bg-2 {
+	background: url(http://www.sip-ych.com/themes/default/Public/assets/images/play/traffic.jpg);
+	background-size: cover;
+}
+
+.quick-nav .bg-3 {
+	background: url(http://www.sip-ych.com/themes/default/Public/assets/images/play/leisure.jpg);
+	background-size: cover;
+}
+
+.quick-nav .bg-4 {
+	background: url(http://www.sip-ych.com/themes/default/Public/assets/images/play/shopping.jpg);
+	background-size: cover;
+}
+
+.quick-nav .bg-5 {
+	background: url(http://www.sip-ych.com/themes/default/Public/assets/images/play/food.jpg);
+	background-size: cover;
+}
+
+// CAROUSEL FEATURE
+.carousel-feature .carousel-item {
+	height: 270px;
+}
+
+.carousel-feature .carousel-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center, center;
+}
+
+.post-entry {
+	.post-inner {
+		h2 {
+			word-wrap: break-word;
+		}
+	}
+}
+
