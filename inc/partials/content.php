@@ -8,7 +8,7 @@
 			<div class="text-center mb-3">
 				<small>发布于: <?php the_time('Y-m-d'); ?></small>
 			</div>
-			<hr>
+			<hr class="hr-dashed-1-muted">
 			<?php
 			the_content();
 			wp_link_pages(
@@ -20,7 +20,17 @@
 				)
 			);
 			?>
-		</div><!-- .entry-content -->
-
+		</div>
+		<hr class="hr-solid-2-muted">
+		<div class="entry-footer">
+			<ul>
+				<li><?php previous_post_link('上篇: %link') ?></li>
+				<li><?php next_post_link('下篇: %link') ?></li>
+			</ul>
+			<div class="tags">
+				<span><i class="fa fa-tags text-muted"></i></span>
+				<?php the_tags('<span class="badge badge-primary badge-pill">', '</li><li>', '</span>'); ?>
+			</div>
+		</div>
 	</article>
 </div>

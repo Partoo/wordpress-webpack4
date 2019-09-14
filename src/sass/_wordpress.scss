@@ -73,16 +73,28 @@
 	}
 }
 
-.entry-content {
-	font-size: 16px;
-	overflow: hidden;
 
-	h1, h2, h3, h4, h5 {
-		word-wrap: break-word;
+#post-content {
+	.entry-content {
+		font-size: 16px;
+		overflow: hidden;
+
+		h1, h2, h3, h4, h5 {
+			word-wrap: break-word;
+		}
+
+		p {
+			text-indent: 2rem;
+		}
 	}
 
-	p {
-		text-indent: 2rem;
+	.entry-footer {
+		ul {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			padding-left: 0;
+		}
 	}
 }
 

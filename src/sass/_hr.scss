@@ -1,0 +1,110 @@
+.hr-solid-1-primary {
+	border-top: 1px solid $primary;
+}
+
+.hr-solid-2-primary {
+	border-top: 2px solid $primary;
+}
+
+.hr-solid-1-muted {
+	border-top: 1px solid $muted;
+}
+
+.hr-solid-2-muted {
+	border-top: 2px solid $muted;
+}
+
+.hr-dashed-1-primary {
+	border-top: 1px dashed $primary;
+}
+
+.hr-dashed-2-primary {
+	border-top: 2px dashed $primary;
+}
+
+.hr-dashed-1-muted {
+	border-top: 1px dashed $muted;
+}
+
+.hr-dashed-2-muted {
+	border-top: 2px dashed $muted;
+}
+
+.hr-dotted-1-primary {
+	border-top: 1px dotted $primary;
+}
+
+.hr-dotted-2-primary {
+	border-top: 2px dotted $primary;
+}
+
+.hr-dotted-1-muted {
+	border-top: 1px dotted $muted;
+}
+
+.hr-dotted-2-muted {
+	border-top: 2px dotted $muted;
+}
+
+.hr-couple-dots {
+	margin: 1.5em 0;
+	text-align: center;
+	border: none;
+}
+
+.hr-couple-dots:before {
+	content: '';
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: #eee;
+	margin: 0 0.4em;
+}
+
+.hr-couple-dots:after {
+	content: '';
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: #eee;
+	margin: 0 0.4em;
+}
+
+.hr-linear-1 {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, #f0f0f0, $blue, $green, #f0f0f0);
+}
+
+.hr-linear-2 {
+	border: 0;
+	height: 2px;
+	background-image: linear-gradient(to right, #f0f0f0, $blue, $green, #f0f0f0);
+}
+
+.hr-humble {
+	border: none;
+	border-top: 1px solid rgba(255, 255, 255, .3);
+	border-bottom: 1px solid rgba(0, 0, 0, .08);
+	margin: 2.5em 0;
+	position: relative;
+}
+
+.hr-humble:before, .hr-humble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	height: 1em;
+	width: 100%;
+	background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+	z-index: 0;
+}
+
+.hr-humble:after {
+	top: 0;
+	bottom: auto;
+	height: 1.5em;
+	background: radial-gradient(ellipse at top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
