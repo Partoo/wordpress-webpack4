@@ -176,3 +176,12 @@ function change_tag_cloud_font_sizes(array $args)
 }
 
 add_filter('widget_tag_cloud_args', 'change_tag_cloud_font_sizes');
+
+add_filter('the_posts', function ($posts, \WP_Query $query) {
+	if ($pick = $query->get('shuffle_and_pick')) {
+		shuffle($posts);
+		$posts = array_slice($posts, 0, (int)$pick);
+	}
+	return $posts;
+}, 10, 2);
+

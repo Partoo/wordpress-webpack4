@@ -17,7 +17,6 @@ class PartooSlider extends WP_Widget
 		);
 	}
 
-
 	// Front-end display of widget
 	public function widget($args, $instance)
 	{
@@ -35,9 +34,10 @@ class PartooSlider extends WP_Widget
 		}
 		$id = 'widget_' . $args['widget_id'];
 		$per_page = intval(get_field('per_page', $id));
+		$step = intval(get_field('step', $id));
 		$col = 12 / $per_page;
 		$direction = get_field('direction', $id);
-		$params = ['per_page' => $per_page, 'vertical' => $direction];
+		$params = ['per_page' => $per_page, 'step' => $step, 'vertical' => $direction];
 //		$is_vertical
 		PartooSlider::$params = json_encode($params);
 		wp_enqueue_script('partoo_slider', 'https://static.wemesh.cn/lib/js/slick.min.js', array(), '', true);
@@ -45,30 +45,21 @@ class PartooSlider extends WP_Widget
 		if (get_field('is_random', $id)) {
 			if (empty(get_field('categories', $id))) {
 				$posts = get_posts([
+					'post_type' => 'post',
 					'posts_per_page' => $total,
-//					'post_type' => 'post',
-					'post_status' => 'publish',
-					'orderby' => 'rand',
-					'meta_query' => array(
-						array(
-							'key' => '_thumbnail_id',
-							'compare' => 'EXISTS'
-						),
-					)
+					'orderby' => 'date',
+					'order' => 'DESC',
+					'no_found_rows' => 'true',
 				]);
 			} else {
 				$posts = get_posts([
 					'cat' => get_field('categories', $id),
-					'posts_per_page' => $total,
-//					'post_type' => 'post',
-					'post_status' => 'publish',
-					'orderby' => 'rand',
-					'meta_query' => array(
-						array(
-							'key' => '_thumbnail_id',
-							'compare' => 'EXISTS'
-						),
-					)
+					'post_type' => 'post',
+					'posts_per_page' => 12,
+					'orderby' => 'date',
+					'order' => 'DESC',
+					'no_found_rows' => 'true',
+					'shuffle_and_pick' => $total // <-- our custom argument
 				]);
 			}
 		} else {
@@ -79,24 +70,28 @@ class PartooSlider extends WP_Widget
 
 			<div id="v-slider">
 				<?php foreach ($posts as $post): ?>
-					<div class="card mb-3 post-card">
-						<div class="row no-gutters">
-							<div class="col-md-4">
-								<a href="<?php echo get_permalink($post) ?>"><img
-										src="<?php if (empty(get_the_post_thumbnail_url($post))) {
-											echo('https://static.wemesh.cn/img/demo/demo1.jpg');
-										} else {
-											echo get_the_post_thumbnail_url($post, 'medium');
-										} ?>"
-										alt="<?php get_the_title($post) ?>" style="height: 120px"></a>
+					<div class="card">
+						<div class="row ">
+							<div class="col-md-4 pr-0">
+								<img src="<?php if (empty(get_the_post_thumbnail_url($post))) {
+									echo rnd_img();
+								} else {
+									echo get_the_post_thumbnail_url($post, 'medium');
+								} ?>" class="w-100">
+								<ul>
+									<li>
+										<i class="fa fa-clock"></i> <?php echo date('Y-m-d', strtotime($post->post_date)) ?>
+									</li>
+								</ul>
 							</div>
-							<div class="col-md-8">
-								<div class="card-body">
+							<div class="col-md-8 pr-0">
+								<div class="card-block p-3">
 									<h5 class="card-title"><a
 											href="<?php echo get_permalink($post) ?>"><?php echo get_the_title($post) ?></a>
 									</h5>
-									<p class="card-text excerpt"><?php echo wp_strip_all_tags($post->post_content) ?>
-									</p>
+									<p class="card-text text-secondary"><?php echo mb_substr(wp_strip_all_tags($post->post_content), 0, 32) ?></p>
+									<p class="text-right mt-2"><a href="<?php echo get_permalink($post) ?>" class="btn
+											btn-sm btn-primary">详情</a></p>
 								</div>
 							</div>
 						</div>

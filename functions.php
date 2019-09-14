@@ -74,6 +74,11 @@ function wemesh_pagination()
 	return null;
 }
 
+function rnd_img()
+{
+	$rnd = random_int(1, 5);
+	return get_theme_file_uri('/dist/images/random/') . $rnd . '.jpg';
+}
 
 // include widgets
 include_once get_stylesheet_directory() . '/inc/widgets/hero.php';

@@ -29,7 +29,16 @@
 			</ul>
 			<div class="tags">
 				<span><i class="fa fa-tags text-muted"></i></span>
-				<?php the_tags('<span class="badge badge-primary badge-pill">', '</li><li>', '</span>'); ?>
+				<?php
+				$tags = get_the_tags();
+				if ($tags) :
+					foreach ($tags as $tag) : ?>
+						<span class="badge badge-primary"><a
+								href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>"
+								title="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></a>
+							</span>
+					<?php endforeach; ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	</article>

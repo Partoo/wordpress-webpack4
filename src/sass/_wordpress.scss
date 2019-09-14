@@ -133,3 +133,37 @@
 		margin-left: 1px;
 	}
 }
+
+.home {
+	.widget {
+		.title {
+			position: relative;
+			padding-bottom: 10px;
+			border-bottom: 1px dotted #c7c7c7;
+			color: #6c757d !important;
+			margin-bottom: 1.5rem;
+
+			&:after {
+				bottom: 0;
+				background: #00afeb;
+				content: "";
+				height: 3px;
+				left: 0;
+				position: absolute;
+				width: 130px;
+			}
+		}
+	}
+}
+
+.post-card {
+	img {
+		height: 120px;
+		width: 100%;
+	}
+
+	.equal-height {
+		height: 120px;
+		overflow: hidden;
+	}
+}

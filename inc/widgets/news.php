@@ -34,103 +34,102 @@ class PartooNews extends WP_Widget
 				}
 			}
 		}
-		echo get_field('title', $id);
 		$total = intval(get_field('total', $id));
 		$is_sticky = get_field('is_sticky', $id);
+		// 如果从置顶文件中选取
+		$post_args = [];
 		if ($is_sticky) {
 			$sticky = get_option('sticky_posts');
+			// 如果指定随机选取
 			if (get_field("is_random", $id)) {
+				// 如果没有指定分类
 				if (empty(get_field("categories", $id))) {
-					$posts = get_posts([
-						'posts_per_page' => $total,
+					$post_args = [
 						'post__in' => $sticky,
-						'post_status' => 'publish',
-						'orderby' => 'rand',
-						'meta_query' => array(
-							array(
-								'key' => '_thumbnail_id',
-								'compare' => 'EXISTS'
-							),
-						)
-					]);
+						'posts_per_page' => 12,
+						'orderby' => 'date',
+						'order' => 'DESC',
+						'no_found_rows' => 'true',
+						'shuffle_and_pick' => $total // <-- our custom argument
+					];
+//					如果指定了分类
 				} else {
-					$posts = get_posts([
+					$post_args = [
 						'cat' => get_field('categories', $id),
-						'posts_per_page' => $total,
 						'post__in' => $sticky,
-						'post_status' => 'publish',
-						'orderby' => 'rand',
-						'meta_query' => array(
-							array(
-								'key' => '_thumbnail_id',
-								'compare' => 'EXISTS'
-							),
-						)
-					]);
+						'posts_per_page' => 12,
+						'orderby' => 'date',
+						'order' => 'DESC',
+						'no_found_rows' => 'true',
+						'shuffle_and_pick' => $total // <-- our custom argument
+					];
 				}
+				// 如果不是随机选取
 			} else {
-				$posts = get_field('posts', $id);
+				var_dump('如果不是随机选取,这里需要设置');
+//				$posts = get_field('posts', $id);
 			}
+			// 如果不是从置顶中选取
 		} else {
+//		如果是随机选取
 			if (get_field("is_random", $id)) {
+//			如果未指定分类
 				if (empty(get_field("categories", $id))) {
-					$posts = get_posts([
-						'posts_per_page' => $total,
-						'post_status' => 'publish',
-						'orderby' => 'rand',
-						'meta_query' => array(
-							array(
-								'key' => '_thumbnail_id',
-								'compare' => 'EXISTS'
-							),
-						)
-					]);
+					$post_args = [
+						'post_type' => 'post',
+						'posts_per_page' => 12,
+						'orderby' => 'date',
+						'order' => 'DESC',
+						'no_found_rows' => 'true',
+						'shuffle_and_pick' => $total // <-- our custom argument
+					];
+					// 如果指定了分类
 				} else {
-					$posts = get_posts([
+					$post_args = [
 						'cat' => get_field('categories', $id),
-						'posts_per_page' => $total,
-						'post_status' => 'publish',
-						'orderby' => 'rand',
-						'meta_query' => array(
-							array(
-								'key' => '_thumbnail_id',
-								'compare' => 'EXISTS'
-							),
-						)
-					]);
+						'posts_per_page' => 12,
+						'orderby' => 'date',
+						'order' => 'DESC',
+						'no_found_rows' => 'true',
+						'shuffle_and_pick' => $total // <-- our custom argument
+					];
 				}
 			} else {
-				$posts = get_field('posts', $id);
+				$ids = get_field('posts', $id);
+				$post_args = [
+					'post__in' => $ids
+				];
 			}
 		}
-		if (count($posts) == 0) {
-			echo '暂无内容';
-		} else
-			?>
-
-		<?php foreach ($posts as $post) : ?>
-		<div class="card mb-3 post-card">
-			<div class="row no-gutters">
-				<div class="col-md-4">
-					<a href="<?php echo get_permalink($post) ?>"><img
-							src="<?php if (empty(get_the_post_thumbnail_url($post))) {
-								echo('https://static.wemesh.cn/img/demo/demo1.jpg');
-							} else {
-								echo get_the_post_thumbnail_url($post, 'medium');
-							} ?>"
-							alt="<?php get_the_title($post) ?>" style="height: 120px"></a>
-				</div>
-				<div class="col-md-8">
-					<div class="card-body">
-						<h5 class="card-title"><a
-								href="<?php echo get_permalink($post) ?>"><?php echo get_the_title($post) ?></a></h5>
-						<p class="card-text excerpt"><?php echo wp_strip_all_tags($post->post_content) ?>
-						</p>
+		query_posts($post_args);
+		if (have_posts()) :
+			while (have_posts()) : the_post(); ?>
+				<div class="card mb-3 post-card">
+					<div class="row no-gutters equal-height">
+						<div class="col-md-4">
+							<a href="<?php the_permalink(); ?>"><img
+									src="<?php if (empty(get_the_post_thumbnail_url())) {
+										echo rnd_img();
+									} else {
+										the_post_thumbnail_url('medium');
+									} ?>"
+									alt="<?php the_title() ?>"></a>
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title"><a
+										href="<?php the_title() ?>"><?php the_title() ?></a>
+								</h5>
+								<p class="card-text excerpt"><?php echo mb_substr(strip_tags(get_the_content()), 0, 46) ?>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	<?php endforeach ?>
+			<?php endwhile; ?>
+		<?php else: ?>
+			<h5><?php echo '暂无内容' ?></h5>
+		<?php endif; ?>
 		<?php echo $args['after_widget'];
 	}
 

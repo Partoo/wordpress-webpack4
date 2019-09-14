@@ -55,7 +55,7 @@ class PartooGallery extends WP_Widget
 						<?php if (!empty($image['title'])): ?>
 							<div class="overlay-bg m-1">
 								<div class="text">
-									<h5><?php echo $image['title'] ?></h5>
+									<h5 style="font-size: 14px"><?php echo $image['title'] ?></h5>
 								</div>
 							</div>
 						<?php endif ?>
