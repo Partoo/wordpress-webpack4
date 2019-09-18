@@ -21,18 +21,18 @@
 			);
 			?>
 		</div>
-		<hr class="hr-solid-2-muted">
+		<hr class="hr-solid-1-muted">
 		<div class="entry-footer">
 			<ul>
 				<li><?php previous_post_link('上篇: %link') ?></li>
 				<li><?php next_post_link('下篇: %link') ?></li>
 			</ul>
 			<div class="tags">
-				<span><i class="fa fa-tags text-muted"></i></span>
 				<?php
 				$tags = get_the_tags();
-				if ($tags) :
-					foreach ($tags as $tag) : ?>
+				if ($tags) :?>
+					<span><i class="fa fa-tags text-muted"></i></span>
+					<?php foreach ($tags as $tag) : ?>
 						<span class="badge badge-primary"><a
 								href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>"
 								title="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></a>

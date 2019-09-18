@@ -120,7 +120,7 @@ class PartooNews extends WP_Widget
 								<h5 class="card-title"><a
 										href="<?php the_title() ?>"><?php the_title() ?></a>
 								</h5>
-								<p class="card-text excerpt"><?php echo mb_substr(strip_tags(get_the_content()), 0, 46) ?>
+								<p class="card-text excerpt"><?php echo mb_substr(strip_tags(get_the_content()), 0, 45) ?>
 								</p>
 							</div>
 						</div>

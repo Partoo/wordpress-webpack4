@@ -32,9 +32,11 @@ get_banner();
 			<div class="col-8">
 				<?php while (have_posts()):
 					the_post();
-					get_template_part('inc/partials/image', get_post_format());
-
-
+					if (get_post_type() == 'image') {
+						get_template_part('inc/partials/image', get_post_format());
+					} else {
+						get_template_part('inc/partials/content', get_post_format());
+					}
 					// If comments are open or we have at least one comment, load up the comment template.
 					// if (comments_open() || get_comments_number()):
 					//     comments_template();

@@ -1,7 +1,8 @@
 .inner-page-banner {
 	display: block;
-	padding: 100px 0;
+	padding: 2rem 0;
 	position: relative;
+	height: 150px;
 
 	.breadcrumbs-area {
 		position: relative;
@@ -38,8 +39,8 @@
 		}
 	}
 
-	h1 {
-		letter-spacing: .5rem;
+	h1, h2, h3, h4, h5, h6 {
+		letter-spacing: .1rem;
 		color: #fff;
 	}
 }

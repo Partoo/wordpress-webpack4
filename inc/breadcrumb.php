@@ -233,7 +233,7 @@ function get_banner()
 		<div class="overlay overlay-dark"></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-12 breadcrumbs-area"><h1><?php echo $cat_name ?></h1>
+				<div class="col-12 breadcrumbs-area"><h2><?php echo $cat_name ?></h2>
 					<nav aria-label="Breadcrumbs"
 						 class="breadcrumb-trail breadcrumbs mt-3"><?php get_breadcrumb(); ?></nav>
 				</div>
