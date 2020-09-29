@@ -12,7 +12,7 @@ $container = get_theme_mod('partoo_container_type');
 	<meta name="MobileOptimized" content="320"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="<?php echo get_theme_mod('desc') ?>">
-	<link rel="stylesheet" href="https://static.wemesh.cn/lib/fontawesome-free-5.9.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.9.0/css/all.min.css">
 	<script>var isIE = !!document.documentMode;
 			isIE && window.location.replace("https://static.wemesh.cn/html/fk_ie.html")</script>
 	<?php wp_head(); ?>
@@ -32,17 +32,17 @@ $container = get_theme_mod('partoo_container_type');
 						alt="大沽河"><span
 						class="brand-name-primary ml-3 d-none d-xl-inline-block">大沽河生态旅游度假区<br/><i>DaGuHe Tourist & Holiday Resort</i></span></a>
 				<?php wp_nav_menu(
-					array(
-						'theme_location' => 'primary',
-						'container_class' => 'collapse navbar-collapse justify-content-center',
-						'container_id' => 'navbar',
-						'menu_class' => 'navbar-nav justify-content-md-center',
-						'menu_id' => 'main-menu',
-						'fallback_cb' => '',
-						'depth' => 2,
-						'walker' => new WP_Bootstrap_Navwalker(),
-					)
-				); ?>
+    [
+        'theme_location' => 'primary',
+        'container_class' => 'collapse navbar-collapse justify-content-center',
+        'container_id' => 'navbar',
+        'menu_class' => 'navbar-nav justify-content-md-center',
+        'menu_id' => 'main-menu',
+        'fallback_cb' => '',
+        'depth' => 2,
+        'walker' => new WP_Bootstrap_Navwalker(),
+    ]
+); ?>
 				<?php get_search_form(); ?>
 				<ul class="navbar-right flex-row d-flex align-items-center m-0">
 					<li class="nav-item"><a class="toggle-search" id="toggle-search" href="#"><i
